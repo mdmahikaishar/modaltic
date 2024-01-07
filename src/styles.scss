@@ -1,0 +1,86 @@
+.modaltic {
+  --modaltic: hsl(219, 32%, 12%);
+  --modaltic-2nd: hsl(219, 8%, 75%);
+  --modaltic-shadow: rgba(0, 0, 0, 0.5);
+  --modaltic-padding: 4rem 1rem;
+  --modaltic-z-index: 10;
+
+  &-light {
+    --modaltic: hsl(219, 100%, 99%);
+    --modaltic-2nd: hsl(219, 8%, 50%);
+    --modaltic-shadow: rgba(0, 0, 0, 0.1);
+  }
+
+  padding: 2rem;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--modaltic-z-index);
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &-container {
+    position: relative;
+    background-color: var(--modaltic);
+    box-shadow: 2px 2px 10px var(--modaltic-shadow);
+    border-radius: 0.5rem;
+  }
+
+  &-pad {
+    padding: var(--modaltic-padding);
+  }
+
+  &-btn {
+    width: 2rem;
+    aspect-ratio: 1 / 1;
+    font-size: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(-50%, 50%);
+    display: grid;
+    place-items: center;
+    color: var(--modaltic-2nd);
+    background: none;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    transition: background-color 200ms ease, color 200ms ease;
+    cursor: pointer;
+
+    & > span {
+      display: block;
+      width: 1rem;
+      height: 0.2rem;
+      position: absolute;
+      background-color: var(--modaltic-2nd);
+      border-radius: 0.2rem;
+      transition: background-color 200ms ease;
+
+      &:first-child {
+        transform: rotate(45deg);
+      }
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+
+    &:hover {
+      background-color: var(--modaltic-2nd);
+
+      & > span {
+        background-color: var(--modaltic);
+      }
+    }
+  }
+}

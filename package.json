@@ -1,0 +1,54 @@
+{
+  "name": "modaltic",
+  "version": "0.1.0",
+  "description": "Always rewriting the same code for modal. Let's try an UI library. That's give more control on the UI with prebuild tools.",
+  "author": "mdmahikaishar <mahikaishar@gmail.com>",
+  "license": "MIT",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "module": "./dist/mjs/index.js",
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "build": "pnpm run build:cjs && pnpm run build:mjs && pnpm run build:css",
+    "build:cjs": "tsc --outDir ./dist/cjs --module commonjs",
+    "build:mjs": "tsc --outDir ./dist/mjs --module es6 --moduleResolution node",
+    "build:css": "sass ./src/styles.scss ./dist/styles.css"
+  },
+  "exports": {
+    ".": [
+      {
+        "types": "./dist/cjs/index.d.ts",
+        "import": "./dist/mjs/index.js",
+        "require": "./dist/cjs/index.js",
+        "default": "./dist/cjs/index.js"
+      }
+    ],
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist/cjs",
+    "dist/mjs",
+    "dist/styles.css"
+  ],
+  "keywords": [
+    "modaltic",
+    "react-modal",
+    "modal",
+    "reactjs"
+  ],
+  "dependencies": {
+    "framer-motion": "^10.17.9",
+    "react-hook-bag": "^0.1.0"
+  },
+  "peerDependencies": {
+    "react": "^18"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "sass": "^1.69.7",
+    "tslib": "^2",
+    "typescript": "^5"
+  }
+}
